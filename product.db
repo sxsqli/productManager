@@ -1,0 +1,19 @@
+create database product_manage;
+
+use product_manage;
+
+create table category (
+	cid int primary key auto_increment,
+	cname varchar(50) not null unique,
+	description varchar(200)
+);
+
+create table product (
+	pid int primary key auto_increment,
+	pname varchar(50) not null,
+	price float(8,2) not null,
+	path  varchar(200),
+	pdescription varchar(200),
+	categoryid int,
+	constraint category_id_fk foreign key(categoryid) references category(cid)
+);
